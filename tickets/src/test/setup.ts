@@ -5,7 +5,11 @@ import { app } from '../app';
 import jwt from 'jsonwebtoken';
 
 declare global {
-  var signin: () => string[];
+  namespace NodeJS {
+    interface Global {
+      signin(): string[];
+    }
+  }
 }
 
 jest.mock('../nats-wrapper');
